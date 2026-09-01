@@ -1,0 +1,40 @@
+name: Lint Action
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+    paths:
+      - '**.java'
+      - '**.kt'
+      - '.github/workflows/lint.yml'
+      - '**.gradle'
+      - '**.kts'
+      - 'gradle/**'
+  pull_request:
+    branches:
+      - main
+      - dev
+    paths:
+      - '**.java'
+      - '**.kt'
+      - '.github/workflows/lint.yml'
+      - '**.gradle'
+      - '**.kts'
+      - 'gradle/**'
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ !startsWith(github.ref, 'refs/tags/v')}}
+
+jobs:
+  lint:
+    name: Linting
+    uses: NeoTamia/actions/.github/workflows/jvm-lint.yml@19c096d7414b3b1756eea45e5aa5c7a3eaed3455 # main
+    permissions:
+      contents: read
+      issues: write
+      pull-requests: write
+      checks: write

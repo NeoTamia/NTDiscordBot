@@ -1,0 +1,19 @@
+# Version catalog is a central place for you to declare and version dependencies
+# https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog
+# https://docs.gradle.org/current/userguide/platforms.html#sub::toml-dependencies-format
+
+[versions]
+kotlin = "2.4.10"
+shadow = "9.6.1"
+spotless = "8.10.1"
+
+[libraries]
+kotlinGradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+shadowGradlePlugin = { module = "com.gradleup.shadow:shadow-gradle-plugin", version.ref = "shadow" }
+spotlessGradlePlugin = { module = "com.diffplug.spotless:spotless-plugin-gradle", version.ref = "spotless" }
+
+[bundles]
+
+
+[plugins]
+kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }

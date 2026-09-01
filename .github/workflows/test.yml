@@ -1,0 +1,41 @@
+name: Test Action
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+    paths:
+      - '**.java'
+      - '**.kt'
+      - '.github/workflows/test.yml'
+      - 'gradle/**'
+      - '**.gradle'
+      - '**.kts'
+  pull_request:
+    branches:
+      - main
+      - dev
+    paths:
+      - '**.java'
+      - '**.kt'
+      - '.github/workflows/test.yml'
+      - 'gradle/**'
+      - '**.gradle'
+      - '**.kts'
+  workflow_dispatch: {}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ !startsWith(github.ref, 'refs/tags/v')}}
+
+jobs:
+  test:
+    name: Test
+    uses: NeoTamia/actions/.github/workflows/jvm-test.yml@19c096d7414b3b1756eea45e5aa5c7a3eaed3455 # main
+    permissions:
+      checks: write
+      pull-requests: write
+    secrets: inherit
+    with:
+      codecov: true

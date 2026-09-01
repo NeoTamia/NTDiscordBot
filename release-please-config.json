@@ -1,0 +1,42 @@
+{
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+  "changelog-path": "CHANGELOG.md",
+  "bump-minor-pre-major": true,
+  "bump-patch-for-minor-pre-major": false,
+  "prerelease-type": "beta",
+  "changelog-sections": [
+    { "type": "feat", "section": "✨ Features" },
+    { "type": "fix", "section": "🐛 Bug Fixes" },
+    { "type": "perf", "section": "⚡ Performance Improvements" },
+    { "type": "revert", "section": "⏪️ Reverts" },
+    { "type": "docs", "section": "📚 Documentation" },
+    { "type": "refactor", "section": "♻️ Code Refactoring" },
+    { "type": "style", "section": "♻️ Code Refactoring" },
+    { "type": "test", "section": "🧪 Tests" },
+    { "type": "fix", "scope": "test", "section": "🧪 Tests" },
+    { "type": "build", "section": "🔧 Build System" },
+    { "type": "deps", "section": "🔗 Dependencies" },
+    { "type": "build", "scope": "deps", "section": "🔗 Dependencies" },
+    { "type": "ci", "section": "👷 Continuous Integration" },
+    { "type": "fix", "scope": "ci", "section": "👷 Continuous Integration", "hidden": true },
+    { "type": "chore", "section": "🔧 Other", "hidden": true }
+  ],
+  "include-v-in-tag": true,
+  "separate-pull-requests": true,
+  "skip-github-release": false,
+  "packages": {
+    ".": {
+      "draft": false,
+      "include-component-in-tag": false,
+      "prerelease": false,
+      "pull-request-title-pattern": "chore(release): 🚀 Release ${version}",
+      "extra-files": [
+        "gradle.properties"
+      ],
+      "release-type": "simple"
+    }
+  },
+  "plugins": [
+    "sentence-case"
+  ]
+}

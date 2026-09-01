@@ -1,0 +1,97 @@
+name: Project Setup
+
+on:
+  push:
+    branches: [master, main]
+  workflow_dispatch:
+
+jobs:
+  setup:
+    name: Setup Project
+    if: ${{ !github.event.repository.is_template }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          fetch-depth: 0
+
+      - name: Check if already initialized
+        id: check
+        run: |
+          if grep -q "re.neotamia.kotlintemplate" buildSrc/src/main/kotlin/neotamia-build.gradle.kts; then
+            echo "initialized=false" >> $GITHUB_OUTPUT
+          else
+            echo "initialized=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Run setup script
+        if: steps.check.outputs.initialized == 'false'
+        run: |
+          REPO_NAME="${{ github.event.repository.name }}"
+          REPO_OWNER="${{ github.repository_owner }}"
+          
+          # Sanitize names
+          LOW_OWNER=$(echo "$REPO_OWNER" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9]//g')
+          LOW_NAME=$(echo "$REPO_NAME" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9]//g')
+           # camelCase: my-repo -> myRepo
+          CAMEL_NAME=$(echo "$REPO_NAME" | sed -r 's/(^|[_-])([a-z])/\U\2/g' | sed 's/[^a-zA-Z0-9]//g' | sed 's/^./\l&/')
+          # PascalCase: my-repo -> MyRepo
+          PASCAL_NAME=$(echo "$REPO_NAME" | sed -r 's/(^|[_-])([a-z])/\U\2/g' | sed 's/[^a-zA-Z0-9]//g')
+          
+          echo "Setting up project for $REPO_OWNER/$REPO_NAME"
+          echo "Package: re.$LOW_OWNER.$LOW_NAME"
+          
+          # 1. Replace strings in all files
+          find . -type f -not -path '*/.*' -not -name 'project-setup.yml' > files.txt
+          while read -r f; do
+              if grep -qI . "$f"; then
+                  sed -i "s/re\.neotamia\.kotlintemplate/re.$LOW_OWNER.$LOW_NAME/g" "$f"
+                  sed -i "s/kotlin-template/$REPO_NAME/g" "$f"
+                  sed -i "s/KotlinTemplate/$PASCAL_NAME/g" "$f"
+                  sed -i "s/kotlinTemplate/$CAMEL_NAME/g" "$f"
+                  sed -i "s/Kotlin Template/$REPO_NAME/g" "$f"
+                  sed -i "s/neotamia-build/$LOW_NAME-build/g" "$f"
+              fi
+          done < files.txt
+          rm files.txt
+          
+          # 2. Replace Owner only in specific files to avoid breaking external actions
+          files_to_replace_owner="README.md CONTRIBUTING.md buildSrc/src/main/kotlin/neotamia-build.gradle.kts settings.gradle.kts"
+          for f in $files_to_replace_owner; do
+              if [ -f "$f" ]; then
+                  sed -i "s/NeoTamia/$REPO_OWNER/g" "$f"
+              fi
+          done
+          
+          # 3. Rename directories to match new package
+          find . -type d -path "*/re/neotamia/kotlintemplate" | while read -r dir; do
+              base_path=$(echo "$dir" | sed 's|/re/neotamia/kotlintemplate$||')
+              new_parent="$base_path/re/$LOW_OWNER"
+              mkdir -p "$new_parent"
+              mv "$dir" "$new_parent/$LOW_NAME"
+              # Clean up old empty directories
+              rmdir "$(dirname "$dir")" 2>/dev/null || true
+          done
+          
+          # 4. Rename neotamia-build.gradle.kts
+          mv buildSrc/src/main/kotlin/neotamia-build.gradle.kts "buildSrc/src/main/kotlin/$LOW_NAME-build.gradle.kts"
+
+      - name: Commit changes
+        if: steps.check.outputs.initialized == 'false'
+        uses: stefanzweifel/git-auto-commit-action@4a55954c782fc1ea30b9056cd3e7a2b40ca8887d # v7
+        with:
+          commit_message: "chore: project setup for ${{ github.event.repository.name }}"
+          push_options: '--force'
+
+      - name: Remove setup workflow
+        if: steps.check.outputs.initialized == 'false' || github.event_name == 'workflow_dispatch'
+        run: rm .github/workflows/project-setup.yml
+
+      - name: Commit removal
+        if: steps.check.outputs.initialized == 'false' || github.event_name == 'workflow_dispatch'
+        uses: stefanzweifel/git-auto-commit-action@4a55954c782fc1ea30b9056cd3e7a2b40ca8887d # v7
+        with:
+          commit_message: "chore: remove setup workflow"
