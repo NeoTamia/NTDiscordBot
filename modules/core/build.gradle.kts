@@ -1,5 +1,5 @@
 plugins {
-    id("neotamia-build")
+    id("ntdiscordbot-build")
 }
 
 extra["localJarRepo"] = true

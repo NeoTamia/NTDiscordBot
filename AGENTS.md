@@ -7,7 +7,7 @@ All AI agents (Claude, Gemini, Codex, Junie, etc.) working on this project must 
 - **Project Structure**: 
   - Modules are located in the `modules/` directory.
   - Core logic resides in `modules/core`.
-  - Build logic and common configurations are in `buildSrc` (using the `neotamia-build` convention plugin).
+  - Build logic and common configurations are in `buildSrc` (using the `ntdiscordbot-build` convention plugin).
 - **Tooling**:
   - Uses Gradle toolchains for JDK 21.
   - Shadow plugin for fat JAR creation.

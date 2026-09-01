@@ -1,13 +1,13 @@
 # Contribution Guidelines
 
 <!-- Links -->
-[fork]: https://github.com/NeoTamia/kotlin-template/fork
-[pr]: https://github.com/NeoTamia/kotlin-template/compare
-[issues]: https://github.com/NeoTamia/kotlin-template/issues
+[fork]: https://github.com/NeoTamia/NTDiscordBot/fork
+[pr]: https://github.com/NeoTamia/NTDiscordBot/compare
+[issues]: https://github.com/NeoTamia/NTDiscordBot/issues
 [fork-pr-process]: https://gist.github.com/Chaser324/ce0505fbed06b947d962
 [table-of-contents]: #table-of-contents
 [code-of-conduct]: CODE_OF_CONDUCT.md
-[releases]: https://github.com/NeoTamia/kotlin-template/releases
+[releases]: https://github.com/NeoTamia/NTDiscordBot/releases
 
 First off, thanks for taking the time to contribute! ❤️
 

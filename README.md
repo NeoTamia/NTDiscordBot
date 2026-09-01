@@ -22,18 +22,18 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/NeoTamia/kotlin-template">
+  <a href="https://github.com/NeoTamia/NTDiscordBot">
     <img src="https://avatars.githubusercontent.com/u/210235009?s=200&v=4" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">kotlin-template</h3>
+<h3 align="center">NTDiscordBot</h3>
 
   <p align="center">
     A template for Kotlin projects. <br />
     <br />
-    <a href="https://github.com/NeoTamia/kotlin-template/issues">Report Bug</a>
+    <a href="https://github.com/NeoTamia/NTDiscordBot/issues">Report Bug</a>
     ·
-    <a href="https://github.com/NeoTamia/kotlin-template/issues">Request Feature</a>
+    <a href="https://github.com/NeoTamia/NTDiscordBot/issues">Request Feature</a>
   </p>
 </div>
 
@@ -103,8 +103,8 @@ Clone the project and build it.
 #### Clone & build
 
 ```sh
-git clone git@github.com:NeoTamia/kotlin-template.git
-cd kotlin-template
+git clone git@github.com:NeoTamia/NTDiscordBot.git
+cd NTDiscordBot
 ./gradlew build
 ```
 
@@ -166,16 +166,16 @@ Distributed under the MIT License. See [LICENSE][license-url] for more informati
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/NeoTamia/kotlin-template.svg?style=for-the-badge
-[contributors-url]: https://github.com/NeoTamia/kotlin-template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/NeoTamia/kotlin-template.svg?style=for-the-badge
-[forks-url]: https://github.com/NeoTamia/kotlin-template/network/members
-[stars-shield]: https://img.shields.io/github/stars/NeoTamia/kotlin-template.svg?style=for-the-badge
-[stars-url]: https://github.com/NeoTamia/kotlin-template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/NeoTamia/kotlin-template.svg?style=for-the-badge
-[issues-url]: https://github.com/NeoTamia/kotlin-template/issues
-[license-shield]: https://img.shields.io/github/license/NeoTamia/kotlin-template.svg?style=for-the-badge
-[license-url]: https://github.com/NeoTamia/kotlin-template/blob/master/LICENSE
+[contributors-shield]: https://img.shields.io/github/contributors/NeoTamia/NTDiscordBot.svg?style=for-the-badge
+[contributors-url]: https://github.com/NeoTamia/NTDiscordBot/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/NeoTamia/NTDiscordBot.svg?style=for-the-badge
+[forks-url]: https://github.com/NeoTamia/NTDiscordBot/network/members
+[stars-shield]: https://img.shields.io/github/stars/NeoTamia/NTDiscordBot.svg?style=for-the-badge
+[stars-url]: https://github.com/NeoTamia/NTDiscordBot/stargazers
+[issues-shield]: https://img.shields.io/github/issues/NeoTamia/NTDiscordBot.svg?style=for-the-badge
+[issues-url]: https://github.com/NeoTamia/NTDiscordBot/issues
+[license-shield]: https://img.shields.io/github/license/NeoTamia/NTDiscordBot.svg?style=for-the-badge
+[license-url]: https://github.com/NeoTamia/NTDiscordBot/blob/master/LICENSE
 [product-screenshot]: https://avatars.githubusercontent.com/u/116024069?s=200&v=4
 [contributing-url]: CONTRIBUTING.md
 

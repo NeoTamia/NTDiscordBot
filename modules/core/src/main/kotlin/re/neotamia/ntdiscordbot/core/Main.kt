@@ -1,4 +1,4 @@
-package re.neotamia.kotlintemplate.core
+package re.neotamia.ntdiscordbot.core
 
 fun main() {
     println("Hello, World!")

@@ -17,7 +17,7 @@ plugins {
 }
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
-rootProject.name = "kotlin-template"
+rootProject.name = "NTDiscordBot"
 
 file("modules").listFiles()?.forEach { file ->
     if (file.isDirectory and !file.name.equals("build")) {
