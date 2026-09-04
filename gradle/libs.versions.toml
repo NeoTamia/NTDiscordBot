@@ -7,10 +7,14 @@ kotlin = "2.4.10"
 shadow = "9.6.1"
 spotless = "8.10.1"
 
+kord = "0.18.1"
+
 [libraries]
 kotlinGradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 shadowGradlePlugin = { module = "com.gradleup.shadow:shadow-gradle-plugin", version.ref = "shadow" }
 spotlessGradlePlugin = { module = "com.diffplug.spotless:spotless-plugin-gradle", version.ref = "spotless" }
+
+kord = { module = "dev.kord:kord-core", version.ref = "kord" }
 
 [bundles]
 

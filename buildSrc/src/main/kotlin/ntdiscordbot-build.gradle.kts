@@ -30,21 +30,20 @@ base {
 repositories {
     mavenCentral()
     mavenLocal()
-    maven {
+    maven("https://jitpack.io") {
         name = "jitpack"
-        url = uri("https://jitpack.io")
     }
-    maven {
+    maven("https://repo.neotamia.re/releases") {
         name = "neotamiaReleases"
-        url = uri("https://repo.neotamia.re/releases")
     }
-    maven {
+    maven("https://repo.neotamia.re/snapshots") {
         name = "neotamiaSnapshots"
-        url = uri("https://repo.neotamia.re/snapshots")
     }
-    maven {
+    maven("https://repo.neotamia.re/private") {
         name = "neotamiaPrivate"
-        url = uri("https://repo.neotamia.re/private")
+    }
+    maven("https://snapshots.kord.dev") {
+        name = "Kord"
     }
 }
 
