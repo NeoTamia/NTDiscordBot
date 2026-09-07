@@ -1,0 +1,6 @@
+# This repo was generated from kotlin-template. The pull job reads `source`
+# (or GitHub template_repository) and applies the PARENT's merge strategies.
+
+source: NeoTamia/kotlin-template
+source_ref:
+prefer_branch: dev

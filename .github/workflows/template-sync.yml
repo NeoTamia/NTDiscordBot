@@ -1,0 +1,35 @@
+# Pulls updates from the parent GitHub template into this repository.
+# Runs here (not on the parent) so GITHUB_TOKEN can open a PR on this repo.
+
+name: Template Sync
+
+on:
+  schedule:
+    - cron: "17 6 * * *"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Log the files that would change, without opening a PR"
+        type: boolean
+        default: false
+      draft_pr:
+        description: "Open the sync PR as a draft"
+        type: boolean
+        default: false
+  repository_dispatch:
+    types: [template-sync]
+
+concurrency:
+  group: template-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    name: Pull parent template
+    uses: NeoTamia/actions/.github/workflows/template-sync.yml@main
+    permissions:
+      contents: write
+      pull-requests: write
+    with:
+      dry_run: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run || false }}
+      draft_pr: ${{ github.event_name == 'workflow_dispatch' && inputs.draft_pr || false }}
