@@ -3,9 +3,10 @@
 # https://docs.gradle.org/current/userguide/platforms.html#sub::toml-dependencies-format
 
 [versions]
-kotlin = "2.4.10"
+kotlin = "2.4.20"
 shadow = "9.6.1"
-spotless = "8.10.1"
+spotless = "8.10.2"
+versionsChecker = "0.61.0"
 
 kord = "0.18.1"
 
@@ -13,6 +14,7 @@ kord = "0.18.1"
 kotlinGradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 shadowGradlePlugin = { module = "com.gradleup.shadow:shadow-gradle-plugin", version.ref = "shadow" }
 spotlessGradlePlugin = { module = "com.diffplug.spotless:spotless-plugin-gradle", version.ref = "spotless" }
+versionCheckerGradlePlugin = { module = "com.github.ben-manes.versions:com.github.ben-manes.versions.gradle.plugin", version.ref = "versionsChecker" }
 
 kord = { module = "dev.kord:kord-core", version.ref = "kord" }
 
