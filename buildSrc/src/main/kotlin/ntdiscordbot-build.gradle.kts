@@ -12,6 +12,7 @@ plugins {
     `java-library`
     id("com.gradleup.shadow")
     id("com.diffplug.spotless")
+    id("com.github.ben-manes.versions")
 }
 
 val baseGroup = "re.neotamia.ntdiscordbot"
@@ -90,9 +91,9 @@ spotless {
     }
 }
 
-//tasks.withType<ShadowJar> {
-//    archiveClassifier.set("")
-//}
+// tasks.withType<ShadowJar> {
+//     archiveClassifier.set("")
+// }
 
 val copyJars = tasks.register<Copy>("copyJars") {
     group = "publishing"
@@ -115,9 +116,9 @@ tasks.build {
     finalizedBy(copyJars)
 }
 
-//tasks.named<Jar>("jar") {
-//    archiveClassifier.set("stripped")
-//}
+// tasks.named<Jar>("jar") {
+//     archiveClassifier.set("stripped")
+// }
 
 tasks.withType<Test>().configureEach {
     useJUnitPlatform()
@@ -148,7 +149,7 @@ project.afterEvaluate {
                 maven {
                     var repository = System.getProperty("repository.name", "snapshots")
                     name = "neotamia${repository.capitalized()}"
-                    url = uri("https://repo.neotamia.re/${repository}")
+                    url = uri("https://repo.neotamia.re/$repository")
                     credentials(PasswordCredentials::class) {
                         username = (findProperty("${name}Username") ?: System.getenv("MAVEN_USERNAME")) as String?
                         password = (findProperty("${name}Password") ?: System.getenv("MAVEN_PASSWORD")) as String?
