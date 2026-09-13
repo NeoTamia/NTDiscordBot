@@ -6,7 +6,7 @@
 kotlin = "2.4.20"
 shadow = "9.6.1"
 spotless = "8.10.2"
-versionsChecker = "0.61.0"
+versionsChecker = "0.62.0"
 
 kord = "0.18.1"
 
