@@ -15,7 +15,7 @@ plugins {
     id("com.github.ben-manes.versions")
 }
 
-val baseGroup = "re.neotamia.ntdiscordbot"
+val baseGroup = "re.neotamia.discordbot"
 group = when {
     project.path.startsWith(":modules:core") -> "$baseGroup.core"
     else -> baseGroup

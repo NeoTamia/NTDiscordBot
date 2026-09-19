@@ -1,4 +1,4 @@
-package re.neotamia.ntdiscordbot.core
+package re.neotamia.discordbot.core
 
 import dev.kord.core.Kord
 import dev.kord.gateway.Intent
